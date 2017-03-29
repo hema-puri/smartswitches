@@ -20,7 +20,7 @@ h2{
 	left: 450px;
 }
 </style>
-<h1>DIY Hacking - Internet of Things Implementation</h2>
+<h1>Smart Switches - Internet of Things Implementation</h2>
 <h2>The Device has been Turned ON </h2>
 </body>
 </html>
@@ -45,7 +45,7 @@ h2{
 	left: 450px;
 }
 </style>
-<h1>DIY Hacking - Internet of Things Implementation</h2>
+<h1>Smart Switches - Internet of Things Implementation</h2>
 <h2>The Device has been Turned OFF </h2>
 </body>
 </html>
