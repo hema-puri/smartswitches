@@ -2,7 +2,7 @@
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
-$con = new mysqli("localhost","root","root","smartswitch");
+$con = new mysql_connect("localhost","root","root","smartswitch");
 
 if (!$con)
 {
@@ -14,7 +14,7 @@ if (isset($_POST['on']))
 {
 $onstring = "ON";
 $sql = "INSERT INTO lightStatus (on_off) VALUES ($onstring);";
-$con->query($sql);
+mysql_query($sql,$con);
 //fwrite($handle,$onstring);
 //fclose($handle);
 print "
@@ -42,7 +42,7 @@ else if(isset($_POST['off']))
 $offstring = "OFF";
 $sql = "INSERT INTO lightStatus (on_off)
 VALUES ($offstring);";
-$con -> query ($sql);
+mysql_query ($sql,$con);
 //fwrite($handle, $offstring);
 //fclose($handle);
 print "
@@ -66,6 +66,6 @@ h2{
 ";
 }
 
-$con->close();
+mysql_close($con);
 
 ?>
