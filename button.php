@@ -2,14 +2,14 @@
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
-$con = mysqli_connect("localhost","root","root");
+$con = $con = new mysqli("localhost","root","root","smartswitch");
 
 if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
  
-mysqli_select_db("smartswitch", $con);
+//mysqli_select_db("smartswitch", $con);
 if (isset($_POST['on']))
 {
 $onstring = "ON";
