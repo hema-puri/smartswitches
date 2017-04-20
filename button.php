@@ -1,8 +1,8 @@
-<?php
+<:?php
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
-$con = new mysqli("192.168.42.255","root","root","smartswitch");
+$con = new mysqli("192.168.42.255:3306","root","root","smartswitch");
 
 if (!$con)
 {
