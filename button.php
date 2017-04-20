@@ -2,7 +2,7 @@
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
-$con = new mysqli("","root","root","smartswitch");
+$con = new mysqli("192.168.42.218","root","root","smartswitch");
 
 if (!$con)
 {
