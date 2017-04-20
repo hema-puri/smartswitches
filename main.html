@@ -1,13 +1,13 @@
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 <body>
+
 <title>SMART SWITCHES</title>
 <style type="text/css">
-h1{
-	padding-left: 300px;
-}
-form{
-	padding-left: 550px;
-}
+
+
 #on{
 	position: absolute;
 	top: 100px;
@@ -21,11 +21,22 @@ form{
 	height: 50px;
 }
 </style>
-<h1> SMART SWITCHES - Internet of Things Implementation </h1>
+<style type="text/css">
+    h1{width: 40%;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    color: #757575;
+    font-family: 'Raleway', sans-serif;
+    text-align: left;
+    padding: 30px;}
+</style>
+<h1> SMART SWITCHES </h1>
 <form action = "button.php" method = "POST">
-<input type = "submit" name ="on" id="on" value = "Turn On">
-<input type = "submit" name ="off" id="off" value = "Turn Off">
+<div class="send-button">
+<input type = "submit" name ="on" id="on" value = "Turn On"> </div>
+<div class="send-button">
+<input type = "submit" name ="off" id="off" value = "Turn Off"> </div>
 </form>
+
 </body>
 </html>
-
