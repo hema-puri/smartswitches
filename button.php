@@ -15,6 +15,7 @@ if (isset($_POST['on']))
 $onstring = "ON";
 $sql = "INSERT INTO lightStatus (on_off)
 VALUES ('ON')";
+$con->query($sql)
 //fwrite($handle,$onstring);
 //fclose($handle);
 print "
