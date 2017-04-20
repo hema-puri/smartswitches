@@ -1,15 +1,26 @@
 <?php
-$file = "buttonStatus.txt";
-$handle = fopen($file,'w+');
+//$file = "buttonStatus.txt";
+//$handle = fopen($file,'w+');
+
+$con = mysqli_connect("localhost","root","root");
+
+if (!$con)
+{
+  die('Could not connect: ' . mysql_error());
+}
+ 
+mysqli_select_db("smartswitch", $con);
 if (isset($_POST['on']))
 {
 $onstring = "ON";
-fwrite($handle,$onstring);
-fclose($handle);
+$sql = "INSERT INTO lightStatus (on_off)
+VALUES ('ON')";
+//fwrite($handle,$onstring);
+//fclose($handle);
 print "
 <html>
 <body>
-<title>DIY Hacking</title>
+<title>Smart Switches</title>
 <style type=text/css>
 h1{
 	padding-left: 300px;
@@ -20,7 +31,7 @@ h2{
 	left: 450px;
 }
 </style>
-<h1>Smart Switches - Internet of Things Implementation</h2>
+<h1>Internet of Things Implementation</h2>
 <h2>The Device has been Turned ON </h2>
 </body>
 </html>
@@ -29,12 +40,14 @@ h2{
 else if(isset($_POST['off']))
 {
 $offstring = "OFF";
-fwrite($handle, $offstring);
-fclose($handle);
+$sql = "INSERT INTO lightStatus (on_off)
+VALUES ('OFF')";
+//fwrite($handle, $offstring);
+//fclose($handle);
 print "
 <html>
 <body>
-<title>DIY Hacking</title>
+<title>Smart Switches</title>
 <style type=text/css>
 h1{
 	padding-left: 300px;
@@ -45,12 +58,13 @@ h2{
 	left: 450px;
 }
 </style>
-<h1>Smart Switches - Internet of Things Implementation</h2>
+<h1>Internet of Things Implementation</h2>
 <h2>The Device has been Turned OFF </h2>
 </body>
 </html>
 ";
 }
 
+$con->close();
 
 ?>
