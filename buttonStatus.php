@@ -13,7 +13,7 @@ if (!$con)
 //mysqli_select_db("smartswitch", $con);
 
 $status = "
-SELECT on_off FROM lightStatus ORDER BY id desc LIMIT 1 " ;//write here the value from which we need to print ";
+SELECT on_off FROM lightStatus ORDER BY id desc LIMIT 1; " ;//write here the value from which we need to print ";
 $bla = $con->query($status);
 if ($bla->num_rows > 0) {
     // output data of each row
@@ -23,6 +23,6 @@ if ($bla->num_rows > 0) {
 } else {
     echo "0 results";
 }
-echo $bla;
-$con->close ();
+
+$con->close();
 ?>
