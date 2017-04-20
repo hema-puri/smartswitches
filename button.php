@@ -43,6 +43,7 @@ else if(isset($_POST['off']))
 $offstring = "OFF";
 $sql = "INSERT INTO lightStatus (on_off)
 VALUES ('OFF')";
+$con -> query ($sql);
 //fwrite($handle, $offstring);
 //fclose($handle);
 print "
