@@ -2,8 +2,8 @@
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
-$con = new mysqli("ec2-54-243-107-66.compute-1.amazonaws.com","penqubzduicfyj","b56764297b8becbbf73a2f8bdeaeb44a04469643cf87bb28150d8b111e95589d","smartswitch");
-
+//$con = new mysqli("ec2-54-243-107-66.compute-1.amazonaws.com","penqubzduicfyj","b56764297b8becbbf73a2f8bdeaeb44a04469643cf87bb28150d8b111e95589d","smartswitch");
+$con=new mysqli("192.168.1.101","system","system","smartswitches");
 if (!$con)
 {
   die('Could not connect: ' . mysql_error());
