@@ -1,4 +1,4 @@
-<:?php
+<?php
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
