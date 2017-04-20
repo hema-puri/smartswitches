@@ -13,7 +13,7 @@ if (!$con)
 if (isset($_POST['on']))
 {
 $onstring = "ON";
-$sql = "INSERT INTO lightStatus (on_off) VALUES ($onstring);";
+$sql = "INSERT INTO lightStatus (on_off) VALUES ('ON');";
 mysql_query($sql,$con);
 //fwrite($handle,$onstring);
 //fclose($handle);
@@ -41,7 +41,7 @@ else if(isset($_POST['off']))
 {
 $offstring = "OFF";
 $sql = "INSERT INTO lightStatus (on_off)
-VALUES ($offstring);";
+VALUES ('OFF');";
 mysql_query ($sql,$con);
 //fwrite($handle, $offstring);
 //fclose($handle);
