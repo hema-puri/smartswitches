@@ -1,22 +1,22 @@
 <?php
-//$file = "buttonStatus.txt";
-//$handle = fopen($file,'w+');
+$file = "buttonStatus.txt";
+$handle = fopen($file,'w+');
 
-//$con = mysql_connect("localhost","root","root");
-$con=new mysqli("192.168.1.101","system","system","smartswitches");
+//$con = new mysqli("localhost","root","root","smartswitch");
 
-if (!$con)
+
+/*if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
  
-//mysql_select_db("smartswitch", $con);
+//mysql_select_db("smartswitch", $con);*/
 if (isset($_POST['on']))
 {
 $onstring = "ON";
-$sql = "INSERT INTO lightStatus (on_off) VALUES ('ON')";
-//fwrite($handle,$onstring);
-//fclose($handle);
+//$sql = "INSERT INTO lightStatus (on_off) VALUES ('ON')";
+fwrite($handle,$onstring);
+fclose($handle);
 print "
 <html>
 <body>
@@ -40,9 +40,9 @@ h2{
 else if(isset($_POST['off']))
 {
 $offstring = "OFF";
-$sql = "INSERT INTO lightStatus (on_off) VALUES ('OFF')";
-//fwrite($handle, $offstring);
-//fclose($handle);
+//$sql = "INSERT INTO lightStatus (on_off) VALUES ('OFF')";
+fwrite($handle, $offstring);
+fclose($handle);
 print "
 <html>
 <body>
@@ -64,7 +64,7 @@ h2{
 ";
 }
 
-$con->commit();
-$con->close();
+//$con->commit();
+//$con->close();
 
 ?>
