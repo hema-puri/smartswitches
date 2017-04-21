@@ -3,7 +3,7 @@
 //$handle = fopen($file,'w+');
 
 //$con = mysql_connect("localhost","root","root");
-$con=new mysqli("192.168.43.1","root","system","smartswitches");
+$con=new mysqli("59.178.223.228","root","system","smartswitches");
 
 if (!$con)
 {
