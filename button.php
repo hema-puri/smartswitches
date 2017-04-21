@@ -3,19 +3,18 @@
 //$handle = fopen($file,'w+');
 
 //$con = mysql_connect("localhost","root","root");
-$con=new mysqli("localhost","root","system","smartswitches");
+$con=new mysqli("192.168.43.1","root","system","smartswitches");
 
 if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
  
-mysql_select_db("smartswitch", $con);
+//mysql_select_db("smartswitch", $con);
 if (isset($_POST['on']))
 {
 $onstring = "ON";
-$sql = "INSERT INTO lightStatus (on_off)
-VALUES ('ON')";
+$sql = "INSERT INTO lightStatus (on_off) VALUES ('ON')";
 //fwrite($handle,$onstring);
 //fclose($handle);
 print "
