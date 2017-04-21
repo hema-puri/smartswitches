@@ -1,22 +1,22 @@
 <?php
-//$file = "buttonStatus.txt";
-//$handle = fopen($file,'w+');
+$file = "buttonStatus.txt";
+$handle = fopen($file,'w+');
 
-$con = new mysqli("172.16.0.1","homeauto","home","mydatabase");
+/*$con = mysql_connect("localhost","root","root");
 
 if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
  
-//mysqli_select_db("smartswitch", $con);
+mysql_select_db("smartswitch", $con);*/
 if (isset($_POST['on']))
 {
 $onstring = "ON";
-$sql = "INSERT INTO lightStatus (on_off) VALUES ('ON');";
-$con->query($sql);
-//fwrite($handle,$onstring);
-//fclose($handle);
+//$sql = "INSERT INTO button (bstatus)
+//VALUES ('ON')";
+fwrite($handle,$onstring);
+fclose($handle);
 print "
 <html>
 <body>
@@ -40,11 +40,10 @@ h2{
 else if(isset($_POST['off']))
 {
 $offstring = "OFF";
-$sql = "INSERT INTO lightStatus (on_off)
-VALUES ('OFF');";
-$con->query ($sql);
-//fwrite($handle, $offstring);
-//fclose($handle);
+//$sql = "INSERT INTO button (status)
+//VALUES ('OFF')";
+fwrite($handle, $offstring);
+fclose($handle);
 print "
 <html>
 <body>
@@ -66,6 +65,6 @@ h2{
 ";
 }
 
-$con->close();
+//$con->close();
 
 ?>
