@@ -52,7 +52,7 @@ if(isset($_POST['signupSubmit'])){
 
     //store signup status into the session
     $_SESSION['sessData'] = $sessData;
-    $redirectURL = ($sessData['status']['type'] == 'success')?'index.php':'registration.php';
+    $redirectURL = ($sessData['status']['type'] == 'success')?'main.html':'registration.php';
 
     //redirect to the home/registration page
     header("Location:".$redirectURL);
