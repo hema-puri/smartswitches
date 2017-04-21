@@ -88,7 +88,7 @@ if(isset($_POST['signupSubmit'])){
     //store login status into the session
     $_SESSION['sessData'] = $sessData;
     //redirect to the home page
-    header("Location:index.php");
+    header("Location:main.html");
 }elseif(!empty($_REQUEST['logoutSubmit'])){
     //remove session data
     unset($_SESSION['sessData']);
