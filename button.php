@@ -2,17 +2,19 @@
 //$file = "buttonStatus.txt";
 //$handle = fopen($file,'w+');
 
+$con = new mysqli("ec2-54-243-107-66.compute-1.amazonaws.com","penqubzduicfyj","b56764297b8becbbf73a2f8bdeaeb44a04469643cf87bb28150d8b111e95589d","smartswitch");
 
-$dbconn = pg_connect("host=ec2-54-243-107-66.compute-1.amazonaws.com dbname=publishing user=penqubzduicfyj password=b56764297b8becbbf73a2f8bdeaeb44a04469643cf87bb28150d8b111e95589d" dbname=d5ia4h1qdpcnbi)
-    or die('Could not connect: ' . pg_last_error());
-
-
+if (!$con)
+{
+  die('Could not connect: ' . mysql_error());
+}
+ 
 //mysqli_select_db("smartswitch", $con);
 if (isset($_POST['on']))
 {
-
+$onstring = "ON";
 $sql = "INSERT INTO lightStatus (on_off) VALUES ('ON');";
-$dbconn->pg_query($sql);
+$con->query($sql);
 //fwrite($handle,$onstring);
 //fclose($handle);
 print "
@@ -40,7 +42,7 @@ else if(isset($_POST['off']))
 $offstring = "OFF";
 $sql = "INSERT INTO lightStatus (on_off)
 VALUES ('OFF');";
-$dbconn->pg_query ($sql);
+$con->query ($sql);
 //fwrite($handle, $offstring);
 //fclose($handle);
 print "
@@ -64,6 +66,6 @@ h2{
 ";
 }
 
-pg_close($dbconn);
+$con->close();
 
 ?>

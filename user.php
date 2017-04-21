@@ -4,30 +4,26 @@ class User{
     private $dbHost     = "localhost";
     private $dbUsername = "root";
     private $dbPassword = "6AD7AcZwNR6KVvtx";
-    //private $dbName     = "smartswitch";
+    private $dbName     = "smartswitch";
     private $userTbl    = "users";
     
-    $dbconn = pg_connect("host=ec2-54-243-107-66.compute-1.amazonaws.com dbname=publishing user=penqubzduicfyj password=b56764297b8becbbf73a2f8bdeaeb44a04469643cf87bb28150d8b111e95589d" dbname=d5ia4h1qdpcnbi)
-    or die('Could not connect: ' . pg_last_error());
-    
-    /*public function __construct(){
+    public function __construct(){
         if(!isset($this->db)){
             // Connect to the database
             $conn = new mysqli($this->dbHost, $this->dbUsername, $this->dbPassword, $this->dbName);
-            $dbconn = pg_connect("host=sheep port=5432 dbname=mary user=lamb password=foo");
             if($conn->connect_error){
                 die("Failed to connect with MySQL: " . $conn->connect_error);
             }else{
                 $this->db = $conn;
             }
         }
-    }*/
+    }
     
     
     public function getRows($conditions = array()){
         $sql = 'SELECT ';
         $sql .= array_key_exists("select",$conditions)?$conditions['select']:'*';
-        $sql .= ' FROM users ';
+        $sql .= ' FROM '.$this->userTbl;
         if(array_key_exists("where",$conditions)){
             $sql .= ' WHERE ';
             $i = 0;
@@ -48,22 +44,22 @@ class User{
             $sql .= ' LIMIT '.$conditions['limit']; 
         }
         
-        $result = pg_query($sql) or die('Query failed: ' . pg_last_error());
+        $result = $this->db->query($sql);
         
         if(array_key_exists("return_type",$conditions) && $conditions['return_type'] != 'all'){
             switch($conditions['return_type']){
                 case 'count':
-                    $data = pg_free_result($result);
+                    $data = $result->num_rows;
                     break;
                 case 'single':
-                    $data = pg_free_result($result);
+                    $data = $result->fetch_assoc();
                     break;
                 default:
                     $data = '';
             }
         }else{
             if($result->num_rows > 0){
-                while($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
+                while($row = $result->fetch_assoc()){
                     $data[] = $row;
                 }
             }
@@ -89,9 +85,10 @@ class User{
                 $values  .= $pre."'".$val."'";
                 $i++;
             }
-            $query = "INSERT INTO users (".$columns.") VALUES (".$values.")";
-            if($insert = pg_query($query))
-            return true;        }else{
+            $query = "INSERT INTO ".$this->userTbl." (".$columns.") VALUES (".$values.")";
+            $insert = $this->db->query($query);
+            return $insert?$this->db->insert_id:false;
+        }else{
             return false;
         }
     }
